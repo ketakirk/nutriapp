@@ -2,6 +2,12 @@ import psycopg2 as pg2
 import uuid
 
 def execute(stmt):
+	"""
+	A utility function used by create- , read-, update- and delete-.
+	Executes input SQL statement 'stmt' and returns query results 
+	if any. 
+	:param stmt: SQL statement to execute
+	"""
 	# Open connection
 	conn = pg2.connect(	database="webapp", 
 						user="rohan")
@@ -29,6 +35,13 @@ def execute(stmt):
 	return result
 
 def create_profile(fname, lname, state):
+	"""
+	---
+	:param fname:
+	:param lname:
+	:param state:
+	:return: 
+	"""
 	# Compose query or stmt
 	profile_id = str(uuid.uuid4())
 	res = execute('''insert into profiles
