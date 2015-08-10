@@ -11,6 +11,7 @@ def home():
 	# retval = json.dumps({"status": "ok", 
 	# 					"msg": "This is the front page"})
 	# return Response(retval, mimetype="text/json")
+	print(request.user_agent)
 	return webapp.send_static_file('index.html')
 
 
