@@ -1,2 +1,5 @@
 *.pyc
 *__pycache__*
+data/parsexml.py
+data/xmltest.py
+data/nutrients.csv

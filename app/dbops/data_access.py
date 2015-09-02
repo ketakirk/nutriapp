@@ -9,7 +9,7 @@ def execute(stmt):
 	:param stmt: SQL statement to execute
 	"""
 	# Open connection
-	conn = pg2.connect(	database="webapp", 
+	conn = pg2.connect(	database="nutriapp", 
 						user="rohan")
 
 	# Create cursor
@@ -34,38 +34,49 @@ def execute(stmt):
 
 	return result
 
-def create_profile(fname, lname, state):
+def create_profile(food_code, display_name, portion_default, portion_amt, solid_fats, added_sugars, calories, saturated_fats):
 	"""
 	---
-	:param fname:
-	:param lname:
-	:param state:
+	:param food_code:
+	:param display_name:
+	:param portion_default:
+	:param portion_amt:
+	:param solid_fats:
+	:param added_sugars:
+	:param calories:
+	:param saturated_fats:
 	:return: 
 	"""
 	# Compose query or stmt
-	profile_id = str(uuid.uuid4())
+	food_id = str(uuid.uuid4())
 	res = execute('''insert into profiles
-			  (profile_id, first_name, last_name, state)
-			  values ('%s', '%s', '%s', '%s');	
-			''' % (profile_id, fname, lname, state)
+			  (food_id, food_code, display_name, portion_default, portion_amt, solid_fats, added_sugars, calories, saturated_fats)
+			  values ('%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s');	
+			''' % (food_id, food_code, display_name, portion_default, portion_amt, solid_fats, added_sugars, calories, saturated_fats)
 	)
 
 	# Return the id of the object created
-	return profile_id;
+	return food_id;
 
-def read_profile(pid):
-	res = execute("select * from profiles where profile_id = '%s'" % pid)
+def read_profile(fid):
+	res = execute("select * from profiles where food_id = '%s'" % fid)
 	return res
 
-def update_profile(pid, columnname, columnval):
+def update_profile(fid, columnname, columnval):
 	res = execute(
-		"update profiles set %s = '%s' where profile_id = '%s';"
-			% (columnname, columnval, pid))
+		"update profiles set %s = '%s' where food_id = '%s';"
+			% (columnname, columnval, fid))
 	return res
 
-def delete_profile(profile_id):
-	res = execute("delete from profiles where profile_id = '%s'"
-					% profile_id)
-	return res
+if __name__ == "__main__":
 
+	print("Testing execute()")
+	qry = "select count (*) from profiles;"
+	res = execute(qry)
+	assert res[0][0] == 2014
 
+	print("Testing read()")
+	res = read_profile('8005f212-544b-4715-86e9-035bace34071')
+	assert res[0][2] == 'Ice cream, regular'
+
+	print('Tests passed')
