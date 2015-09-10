@@ -11,8 +11,8 @@ $(document).ready(function(){
 
 	// Handler for read event
 	$("#readprofbtn").click(function(){
-		var pid = $("#readprofinput").val();
-		url = globals.baseUrl + "/profile/" + pid.toString();
+		var fid = $("#readprofinput").val();
+		url = globals.baseUrl + "/profile/" + fid.toString();
 		$.getJSON(url, function (data) {
 			newHtml = "<h3> First name =" 
 					  + data["profile_data"]["first_name"]
