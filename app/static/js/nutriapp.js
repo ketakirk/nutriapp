@@ -15,18 +15,36 @@ $(document).ready(function(){
 		// alert(fid)
 		url = globals.baseUrl + "/profile/" + fid.toString();
 		$.getJSON(url, function (data) {
-			newHtml = "<h4> Food item =" 
+			newHtml = "<table class='table table-bordered'>"
+					  +"<tr>"
+					  +"<th>Food item:"
+					  +"</th>"
+					  +"<td>"
 					  + data["food_data"]["display_name"]
-					  + "</h4>"	
-					  + "<p> Portion size: "
+					  +"</td>"
+					  + "</tr>"
+					  +"<tr>"
+					  +"<th>Portion size:"
+					  +"</th>"
+					  +"<td>"
 					  + data["food_data"]["portion_amt"]
-					  +"</p>"
-					  + "<p> Calories: "
+					  +"</td>"
+					  + "</tr>"
+					  +"<tr>"
+					  +"<th>Calories:"
+					  +"</th>"
+					  +"<td>"
 					  + data["food_data"]["calories"]
-					  +"</p>"
-					  + "<p> Added Sugars: "
+					  +"</td>"
+					  + "</tr>"
+					  +"<tr>"
+					  +"<th>Added Sugars:"
+					  +"</th>"
+					  +"<td>"
 					  + data["food_data"]["added_sugars"]
-					  +"</p>"		
+					  +"</td>"
+					  + "</tr>"
+					  +"</table>"		
 			// alert(newHtml);
 			panelContent = $("#panelcontent");
 			// alert(panelContent.text());

@@ -1,28 +1,22 @@
-# Heading 1
-## Heading 2
-### Heading 3
+### About
 
-Lorem Ipsum is _italic text_ simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+Nutriapp provides nutritional information for common food items. This is an end-to-end application written in Python built using the Flask framework.
 
-This is __bold__ text
+### Libraries used:
+* BeautifulSoup
+* psycopg2
+* uuid
+* json
 
-# How to generate bullets
-* Bullet 1
-* Bullet 2
-* Bullet 3
+### App overview
+The nutrition data was extracted from the [Government food database](http://catalog.data.gov/dataset/mypyramid-food-raw-data-f9ed6) and was cleaned using the BeautifulSoup library. The cleaned data is fed to a backend Postgres database, and made available through CRUD operations written in Python. Finally, the data is presented through a simple Javascript front end.
 
-# How to generate numbered list
-1. Item 1
-2. Item 2
+This is a work in progress. Currently, the food items are searchable by unique identifiers. The goal is to create an application where the food items can be searched using interesting attributes such as calorie content or processed sugar contents. 
 
-# How to generate code
-This is inline code `python foo.py`
+### Sample response:
+Here are the screenshots of responses from Postman and the browser.
 
-A code block is created by indenting a line by 4 spaces
-    import foo
-
-    for item in line:
-    	pass
+![Postman](https://github.com/ketakirk/nutriapp/app/static/images/postman.jpg)
 
     
 
