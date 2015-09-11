@@ -16,10 +16,16 @@ This is a work in progress. Currently, the food items are searchable by unique i
 ### Sample response:
 Here are the screenshots of responses from Postman and the browser.
 
+__Postman__
+
 ![Postman](https://cloud.githubusercontent.com/assets/11531183/9825843/ffb7200e-588a-11e5-9aae-4f97561ef124.jpg)
 
+
+__Before the request is made__
 ![Without response](https://cloud.githubusercontent.com/assets/11531183/9825847/071cded8-588b-11e5-9646-8dfdd14c1dd1.jpg)
 
+
+__Response__
 ![With response](https://cloud.githubusercontent.com/assets/11531183/9825854/0d9ff51a-588b-11e5-983d-dd7ed71898b1.jpg)
 
     
