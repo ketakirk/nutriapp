@@ -37,6 +37,33 @@ def read_profile(fid):
     return json.dumps(profile)
 
 
+def get_food_betw_cal(mincal, maxcal):
+
+    retval = db.get_food_betw_cal(mincal, maxcal)
+
+    fil = []
+    for t in retval:
+        fil.append(
+            {"display_name": t[2], 
+            "calories": t[7]}
+            )
+    # print(fil)
+
+    if retval:
+
+            food_betw_cal = { "status": "ok",
+                            "food_data": fil
+                        }
+            
+    else:
+        food_betw_cal = {"status": "fail", "food_data": "not found"}
+
+    print(food_betw_cal)
+    return json.dumps(food_betw_cal)
+
+if __name__ == '__main__':
+    get_food_betw_cal(100, 200)
+
 
 
 

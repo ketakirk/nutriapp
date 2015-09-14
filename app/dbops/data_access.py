@@ -68,6 +68,12 @@ def update_profile(fid, columnname, columnval):
 			% (columnname, columnval, fid))
 	return res
 
+def get_food_betw_cal(mincal, maxcal):
+	res = execute("select * from profiles where cast(calories as float) between '%s' and '%s' order by cast(calories as float) asc limit 10;" 
+		% (mincal, maxcal))
+	return res
+
+
 if __name__ == "__main__":
 
 	print("Testing execute()")
@@ -78,6 +84,11 @@ if __name__ == "__main__":
 	print("Testing read()")
 	res = read_profile('8005f212-544b-4715-86e9-035bace34071')
 	assert res[0][2] == 'Ice cream, regular'
+
+	print("Testing compare_cal()")
+	res = get_food_betw_cal(0, 100)
+	assert res[0][2] == 'Water'
+	assert res[9][2] == 'Lettuce'
 
 	print('Tests passed')
 

@@ -15,3 +15,13 @@ def home():
 def read_profile(fid):    
     profile = views.read_profile(fid)
     return Response(profile, mimetype="text/json")
+
+# Read profiles between minimum and maximum calories
+@nutriapp.route("/between", methods=["GET"])
+def get_food_betw_cal():
+	# Extract URL parameters from request
+	mincal = request.args.get("mincal", " ")
+	maxcal = request.args.get("maxcal", " ")
+	# print(mincal, maxcal)
+	food_betw_cal = views.get_food_betw_cal(mincal, maxcal)
+	return Response(food_betw_cal, mimetype="text/json")
